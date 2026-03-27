@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+/* variaveis */
+@theme {
+  /* Fontes dos textos */
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Cores personalizadas */
+  --color-principal: #c99d00;
+  --color-principal-hover: #997c14;
+}
+
+/* geral */
+@layer base {
+  /* Aplica scroll suave e fonte globalmente */
+  html {
+    @apply scroll-smooth font-poppins;
+  }
+
+  * {
+    @apply duration-300 ease-in-out;
+    /* outline: 1px solid red; */
+  }
+}
+
+@layer components {
+  .interface {
+    @apply mx-auto max-w-[1280px] w-full px-3 lg:px-5 py-2;
+  }
+}
