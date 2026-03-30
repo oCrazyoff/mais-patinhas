@@ -17,9 +17,6 @@
                     case 'auth':
                         self::auth();
                         break;
-                    case 'guest':
-                        self::guest();
-                        break;
                     case 'admin':
                         self::admin();
                         break;
@@ -65,21 +62,13 @@
             }
         }
 
-        // Apenas visitantes
-        private static function guest()
-        {
-            if (isset($_SESSION['id'])) {
-                redirect('cardapio');
-            }
-        }
-
         // Apenas Administradores
         private static function admin()
         {
             // Assume que auth() já rodou antes
             if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                 aviso("Você não tem permissão para acessar essa área.");
-                redirect('cardapio');
+                redirect('anuncios');
             }
         }
 
@@ -89,7 +78,7 @@
             // Assume que auth() já rodou antes
             if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 3) {
                 aviso("Você não tem permissão para acessar essa área.");
-                redirect('cardapio');
+                redirect('anuncios');
             }
         }
     }
